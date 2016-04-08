@@ -2,8 +2,15 @@ var router = require('express').Router();
 
 var mongoose = require('mongoose');
 
+var validDb = ['Product', 'Employee'];
 
 router.get('/:db', function( req, res, next ){
+
+  if(!isValidDb(req.params.db)){
+    res.sendStatus(404);
+    return;
+  }
+
   mongoose.model(req.params.db).find({})
   .then(function(result){
     res.send(getAlphaList(result));
@@ -12,7 +19,7 @@ router.get('/:db', function( req, res, next ){
 
 router.get('/:db/:filter', function( req, res, next ){
 
-  if(!isLetter(req.params.filter) || req.params.filter.length!==1){
+  if(!isLetter(req.params.filter) || req.params.filter.length!==1 || !isValidDb(req.params.db)){
     res.sendStatus(404);
     return;
   }
@@ -38,8 +45,8 @@ var getAlphaList = function(list){
 var filterList = function(list, filter){
 
   var result = [];
-  filter = filter.toUpperCase();
 
+  filter = filter.toUpperCase();
   list.forEach(function(item){
     var letter = item.name.toUpperCase()[0];
 
@@ -53,6 +60,10 @@ var filterList = function(list, filter){
 var isLetter = function(letter){
   return 'ABCDEFGHIJKLMOPQRTSUVWXYZ'.indexOf(letter.toUpperCase()) !== -1;
 
+};
+
+var isValidDb = function (db){
+  return validDb.indexOf(db) !== -1;
 };
 
 module.exports = router;
