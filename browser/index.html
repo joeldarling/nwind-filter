@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+      <title>Northwind Filter</title>
+
+      <link href="/bootstrap/css/bootstrap.css" rel="stylesheet" />
+      <link href="/stylesheets/styles.css" rel="stylesheet" />
+
+      <script src="/angular/angular.js" defer></script>
+      <script src="/node_modules/angular-ui-router/release/angular-ui-router.js" defer></script>
+      <script src="/js/app.js" defer></script>
+      <script src="/js/filter/filter.directive.js" defer></script>
+      <script src="/js/filter/filter.factory.js" defer></script>
+      <script src="/js/product/product.state.js" defer></script>
+
+
+  </head>
+
+  <body ng-app="nwind_filter">
+    <div class="container">
+      <h3> Northwind Filter</h3>
+
+      <filter></filter>
+
+    </div>
+
+    <div class="col-xs-2">
+        <sidebar></sidebar>
+      </div>
+
+      <div class="col-xs-10">
+        <ui-view></ui-view>
+      </div>
+  </body>
+
+</html>
