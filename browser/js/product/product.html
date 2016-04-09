@@ -2,9 +2,5 @@
 <br/>
 <filter list="alphaList" curr="activeFilter"></filter>
 <hr/>
-<div class="panel panel-default" ng-show="productList.length>0">
-  <div ng-repeat="product in productList" class="panel-body">{{ product.name }}</div>
-</div>
-<div class="well" ng-show="!productList">
-  Please select a filter!
-</div>
+
+<list-filter items="productList"></list-filter>
