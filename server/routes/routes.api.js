@@ -19,7 +19,9 @@ router.get('/:db', function( req, res, next ){
 
 router.get('/:db/:filter', function( req, res, next ){
 
+
   if(!isLetter(req.params.filter) || req.params.filter.length!==1 || !isValidDb(req.params.db)){
+
     res.sendStatus(404);
     return;
   }
@@ -58,7 +60,7 @@ var filterList = function(list, filter){
 };
 
 var isLetter = function(letter){
-  return 'ABCDEFGHIJKLMOPQRTSUVWXYZ'.indexOf(letter.toUpperCase()) !== -1;
+  return 'ABCDEFGHIJKLMNOPQRTSUVWXYZ'.indexOf(letter.toUpperCase()) !== -1;
 
 };
 

@@ -1,16 +1,36 @@
 app.config(function ($stateProvider) {
 
   $stateProvider.state('products', {
-    url: '/Product',
-    // template: '<filter filter="alphabet"></filter>',
-    template:'<p>hello</p>',
+    url: '/products',
+    template: '<filter list="{list:alphaList}"></filter>',
     resolve: {
-      productList: function (FilterFactory) {
-        return FitlerFactory.fetchAll('Product');
+      alphaList: function (FilterFactory) {
+        return FilterFactory.fetchAll('Product');
       }
     },
-    controller: function(){
-      console.log('hello');
+    controller: function($scope, alphaList){
+      $scope.alphaList = alphaList;
+
     }
   });
+
+  $stateProvider.state('product', {
+    url: '/product/:filter',
+    templateUrl: '/js/product/product.html',
+    resolve: {
+      productList: function (FilterFactory, $stateParams) {
+        return FilterFactory.fetchFiltered('Product',$stateParams.filter);
+      },
+      alphaList: function (FilterFactory) {
+        return FilterFactory.fetchAll('Product');
+      }
+    },
+    controller: function($scope, $stateParams, productList, alphaList){
+      $scope.productList = productList;
+      $scope.alphaList = alphaList;
+      $scope.activeFilter = $stateParams.filter;
+
+    }
+  });
+
 });

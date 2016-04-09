@@ -17,20 +17,20 @@
   </head>
 
   <body ng-app="nwind_filter">
+    <ul class="nav nav-pills">
+      <li><a ui-sref="products">Products</a></li>
+      <li><a ui-sref="employee">Employees</a></li>
+
+    </ul>
     <div class="container">
-      <h3> Northwind Filter</h3>
 
-      <filter></filter>
 
+     <h3> Northwind Filter</h3>
+
+        <div class="col-xs-12">
+          <ui-view></ui-view>
+        </div>
     </div>
-
-    <div class="col-xs-2">
-        <sidebar></sidebar>
-      </div>
-
-      <div class="col-xs-10">
-        <ui-view></ui-view>
-      </div>
   </body>
 
 </html>
