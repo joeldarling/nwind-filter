@@ -10,7 +10,7 @@ To install all dependencies:
 npm install
 ```
 
-Make sure that Mongo is running on your system. 
+Make sure that Mongo is running on your system.
 
 To seed the database:
 ```
@@ -25,4 +25,4 @@ npm start
 
 To view the app, point your browser to [http://localhost:3000/](http://localhost:3000/)
 
-![Alt text](/angulardemo.gif?raw=true "demo")
+![Alt text](/demo.gif?raw=true "demo")
