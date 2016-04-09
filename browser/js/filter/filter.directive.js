@@ -5,17 +5,14 @@ app.directive('filter', function(){
   return {
     templateUrl: '/js/filter/filter.html',
     scope: {
-      list:'='
+      list:'=',
+      curr:'='
     },
-    controller: function($scope){
+    controller: function($scope, $state){
       $scope.alphabet = alphabet;
-      $scope.items = $scope.list.list;
-      $scope.activeFilter = $scope.list.filter;
-
       $scope.inList = function(letter){
-        return $scope.items.indexOf(letter) !== -1;
+        return $scope.list.indexOf(letter) !== -1;
       };
-
     }
   };
 
