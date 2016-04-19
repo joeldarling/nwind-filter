@@ -1,0 +1,24 @@
+good work.. I think if you ended up returning a map for active letters things would be a little more interesting.
+
+Also think about naming of the routes
+
+/api/employees/letterMap =  would return an object like this:
+{
+A: true,
+C: true,
+...
+X: true
+}
+
+wouldn't have to be in order.
+
+Also take advantage of db--- don't fetch everything.. fetch just what you need.
+
+You could also have used nested routes... this way you only have to get the 'map' once.
+
+Good work though..
+
+ah one more thing...
+
+mongoose.model[req.params.db]... be careful!!!!
+mongoose.model['User'].. oucheee!!!

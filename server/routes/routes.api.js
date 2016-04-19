@@ -11,9 +11,13 @@ router.get('/:db', function( req, res, next ){
     return;
   }
 
+  //now with what you know about security-- would you do this?
   mongoose.model(req.params.db).find({})
   .then(function(result){
-    res.send(getAlphaList(result));
+    return getAlphaList(result);
+  })
+  .then(function(result){
+    res.send(result);
   });
 });
 
@@ -25,6 +29,8 @@ router.get('/:db/:filter', function( req, res, next ){
     res.sendStatus(404);
     return;
   }
+  //here you are looping over all the data
+  //how about Employee.find({name: new Regexp(req.params.filter)})
   mongoose.model(req.params.db).find({})
   .then(function(result){
     res.send(filterList(result, req.params.filter));
@@ -32,10 +38,13 @@ router.get('/:db/:filter', function( req, res, next ){
 });
 
 var getAlphaList = function(list){
+  //how about a map var results = {};
   var result = [];
 
   list.forEach(function(item){
     var letter = item.name.toUpperCase()[0];
+    //if you had a map
+    //results[item.name.toUpperCase()[0]] = true;
 
     if(result.indexOf(letter) === -1)
       result.push(letter);

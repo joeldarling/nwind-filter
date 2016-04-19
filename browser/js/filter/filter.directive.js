@@ -7,7 +7,7 @@ app.directive('filter', function(){
     scope: {
       list:'=',
       curr:'='
-    },
+    },//possibly passing in a map of 'active' letters would be easier
     controller: function($scope, $state){
       $scope.alphabet = alphabet;
       $scope.inList = function(letter){
